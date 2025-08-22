@@ -5,6 +5,7 @@ import { firstValueFrom } from 'rxjs';
 @Injectable()
 export class AppService {
   constructor(@Inject('USER_SERVICE') private readonly client: ClientProxy) {}
+
   async getHello() {
     return await firstValueFrom(this.client.send<string>('app.getHello', {}));
   }

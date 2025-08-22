@@ -1,11 +1,12 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { UserModule } from './user.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { Logger } from '@nestjs/common';
+import { AllRpcExceptionsFilter } from './common/filters';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-    AppModule,
+    UserModule,
     {
       transport: Transport.TCP,
       options: {
@@ -14,6 +15,8 @@ async function bootstrap() {
       },
     },
   );
+
+  app.useGlobalFilters(new AllRpcExceptionsFilter());
   await app.listen();
   Logger.log(
     `🎉 User service is running on: http://localhost:${process.env.PORT ?? 3001}`,

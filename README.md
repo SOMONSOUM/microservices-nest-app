@@ -63,11 +63,10 @@ http://localhost:3000/api
 
 ### 👤 User Endpoints
 
-| Method | Endpoint     | Description       |
-| ------ | ------------ | ----------------- |
-| POST   | `/users`     | Create a new user |
-| GET    | `/users`     | Get all users     |
-| DELETE | `/users/:id` | Delete a user     |
+| Method | Endpoint          | Description       |
+| ------ | ----------------- | ----------------- |
+| POST   | `/users/register` | Create a new user |
+| GET    | `/users`          | Get all users     |
 
 ## 🛠️ Tech Stack
 
